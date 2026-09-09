@@ -1,0 +1,418 @@
+Ecco il codice finale aggiornato con il link al profilo Instagram ufficiale `@dettagliesfumature` e la conferma dei collegamenti WhatsApp sul numero fisso.
+
+Puoi copiare questo blocco e incollarlo direttamente su GitHub nel file `index.html`.
+
+```html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettagli e Sfumature - Parrucchiere a Rivoli</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #1b6769; 
+            --accent-color: #d4af37; 
+            --whatsapp-color: #25D366; 
+            --light-bg: #eef4f4; 
+            --text-dark: #2c3e3e;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        /* HEADER E PULSANTI */
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            padding: 15px 20px;
+            background: var(--white);
+            gap: 15px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 10;
+        }
+
+        .btn {
+            display: inline-block;
+            color: var(--white);
+            padding: 12px 24px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-chiama { background-color: var(--accent-color); }
+        .btn-chiama:hover { background-color: #bfa030; transform: translateY(-2px); }
+
+        .btn-wa { background-color: var(--whatsapp-color); }
+        .btn-wa:hover { background-color: #1ebe57; transform: translateY(-2px); }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #fdfbfb 0%, var(--light-bg) 100%);
+            text-align: center;
+            padding: 100px 20px 80px 20px;
+        }
+
+        .logo-container img { max-width: 250px; height: auto; margin-bottom: 30px; }
+
+        .hero h1 {
+            color: var(--primary-color);
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto; margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* SEZIONE FULL-SERVICE */
+        .about-section {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 80px 20px;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-color: #a8c4c5; 
+            background-image: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .about-text { flex: 1; min-width: 300px; }
+        .about-text h2 { font-size: 2.8rem; margin: 0 0 20px 0; }
+        .about-text p { font-size: 1.1rem; color: #d1e5e5; margin-bottom: 30px; }
+
+        /* INFO, ORARI E MAPPA */
+        .info-section {
+            padding: 80px 20px;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+        }
+
+        .info-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .info-box {
+            flex: 1;
+            min-width: 320px;
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 4px;
+        }
+
+        .info-box h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 1px solid #d4c5b0;
+            padding-bottom: 15px;
+        }
+
+        .hours-list { list-style: none; padding: 0; margin: 0; }
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 1.1rem;
+        }
+        .hours-list li.closed { color: #b05c5c; font-weight: 700; }
+
+        .contact-details p { font-size: 1.1rem; margin: 15px 0; }
+        
+        .map-container {
+            margin-top: 25px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* RECENSIONI E INSTAGRAM */
+        .social-section {
+            background-color: var(--light-bg);
+            padding: 80px 20px;
+            overflow: hidden;
+        }
+
+        .reviews-wrapper {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 10px 40px 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+            scroll-snap-type: x mandatory;
+        }
+
+        .reviews-wrapper::-webkit-scrollbar { height: 8px; }
+        .reviews-wrapper::-webkit-scrollbar-track { background: #e0e0e0; border-radius: 4px; }
+        .reviews-wrapper::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 4px; }
+
+        .review-card {
+            flex: 0 0 320px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .review-stars { color: #FFD700; font-size: 1.2rem; margin-bottom: 15px; }
+        .review-text { font-size: 1rem; font-style: italic; line-height: 1.5; flex-grow: 1; }
+        .review-link-icon {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .ig-grid {
+            max-width: 1100px;
+            margin: 40px auto 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .ig-post {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background: var(--white);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .ig-post:hover { transform: scale(1.02); }
+
+        /* FOOTER */
+        footer {
+            background-color: #124344;
+            color: #a8c4c5;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .top-bar { justify-content: center; position: relative; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="tel:0114297863" class="btn btn-chiama">📞 Chiama Ora</a>
+        <a href="https://wa.me/390114297863" target="_blank" class="btn btn-wa">💬 WhatsApp</a>
+    </div>
+
+    <header class="hero">
+        <div class="logo-container">
+            <img src="image_9a5480.png" alt="Dettagli e Sfumature Parrucchiere Logo">
+        </div>
+        <h1>Fai brillare la tua<br>vera bellezza</h1>
+        <p>Vivi un'esperienza di altissimo livello per la cura e la bellezza dei tuoi capelli nel cuore di Rivoli.</p>
+        
+        <div class="hero-buttons">
+            <a href="https://wa.me/390114297863" target="_blank" class="btn btn-wa">Prenota su WhatsApp</a>
+        </div>
+    </header>
+
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-image"></div>
+            <div class="about-text">
+                <h2>Il tuo salone<br>di fiducia</h2>
+                <p>Curiamo ogni dettaglio per esaltare le tue sfumature uniche. Dalla consulenza personalizzata all'utilizzo di prodotti di alta gamma, il nostro obiettivo è farti sentire e apparire al meglio. Scopri la differenza di un servizio su misura creato apposta per te.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <h2 class="section-title">Vieni a Trovarci</h2>
+        <div class="info-grid">
+            
+            <div class="info-box">
+                <h3>Orari di Apertura</h3>
+                <ul class="hours-list">
+                    <li class="closed"><span>Lunedì</span> <span>Chiuso</span></li>
+                    <li><span>Martedì</span> <span>10:00 – 19:00</span></li>
+                    <li><span>Mercoledì</span> <span>10:00 – 19:00</span></li>
+                    <li><span>Giovedì</span> <span>10:00 – 19:00</span></li>
+                    <li><span>Venerdì</span> <span>10:00 – 19:00</span></li>
+                    <li><span>Sabato</span> <span>10:00 – 19:00</span></li>
+                    <li class="closed"><span>Domenica</span> <span>Chiuso</span></li>
+                </ul>
+            </div>
+
+            <div class="info-box contact-details">
+                <h3>I Nostri Recapiti</h3>
+                <p>📍 C.so Francia, 3A, 10098 Rivoli TO</p>
+                <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+                    <a href="tel:0114297863" class="btn btn-chiama" style="padding: 8px 15px; font-size: 0.8rem;">Chiama: 011 429 7863</a>
+                    <a href="https://wa.me/390114297863" target="_blank" class="btn btn-wa" style="padding: 8px 15px; font-size: 0.8rem;">Scrivici su WhatsApp</a>
+                </div>
+                
+                <div class="map-container">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Corso%20Francia,%203A,%2010098%20Rivoli%20TO&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="200" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-section">
+        <h2 class="section-title">Cosa Dicono di Noi</h2>
+        
+        <div class="reviews-wrapper">
+            <a href="https://share.google/ddIuRZjFpQeW7hZva" target="_blank" class="review-card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">"Roberta e Sara sono incredibilmente disponibili e hanno il dono di farti sentire subito coccolata e ascoltata. Prima di iniziare, mi hanno dedicato una consulenza approfondita [...] Se cercate professionalità e un ambiente accogliente, questo è il posto giusto!"</div>
+                <div class="review-link-icon">Leggi su Google ↗</div>
+            </a>
+
+            <a href="https://share.google/NAZ3bW4WivRu2016p" target="_blank" class="review-card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">"Mi sono trovata davvero molto bene! 😊 Il taglio e la piega sono stupendi, esattamente come li volevo, e si vede la cura e l’attenzione ai dettagli. [...] Personale gentile e professionale, ambiente accogliente. Tornerò sicuramente, super consigliata! ✨"</div>
+                <div class="review-link-icon">Leggi su Google ↗</div>
+            </a>
+
+            <a href="https://share.google/k2MQjWFidYnUsrRt1" target="_blank" class="review-card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">"Oggi ho sperimentato questo salone... Che dire, mi sono trovata benissimo. Accoglienza, gentilezza, simpatia e quello che ho apprezzato anche l'attenzione verso il cliente... [...] Ottimo lavoro... Soddisfatta e contenta del risultato. Ve lo consiglio."</div>
+                <div class="review-link-icon">Leggi su Google ↗</div>
+            </a>
+
+            <a href="https://share.google/WDkg2dWo4fEiVJmJE" target="_blank" class="review-card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">"Sono super soddisfatta! Era da tempo che cercavo un salone capace di capire esattamente cosa volessi, e qui ho trovato la persona giusta. Il taglio è impeccabile [...] Ci tornerò sicuramente, super consigliato! Grazie ragazze 🥰"</div>
+                <div class="review-link-icon">Leggi su Google ↗</div>
+            </a>
+
+            <a href="https://share.google/e4BjBoTSfH61aUmWq" target="_blank" class="review-card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">"Consiglio vivamente il salone di Roberta e Sara, che uniscono competenza e simpatia per un appuntamento perfetto. Sono entrata li dentro con poche idee e anche confuse, hanno saputo gestire le mie richieste al meglio e ora amo i miei capelli alla follia!"</div>
+                <div class="review-link-icon">Leggi su Google ↗</div>
+            </a>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 60px;">Seguici su Instagram</h2>
+        
+        <div class="ig-grid">
+            <a href="https://www.instagram.com/dettagliesfumature" target="_blank" class="ig-post" style="border: 2px solid var(--accent-color);">
+                <div style="font-size: 2rem; margin-bottom: 10px;">✨</div>
+                <strong>@dettagliesfumature</strong>
+                <p style="font-size: 0.9rem; color: #777;">Visita il nostro profilo ufficiale</p>
+            </a>
+
+            <a href="https://www.instagram.com/p/DbnpCAnCOrl/?stkn=NmhpZDl2eTNiY3hm" target="_blank" class="ig-post">
+                <div style="font-size: 2rem; margin-bottom: 10px;">📸</div>
+                <strong>Guarda l'ultimo Look</strong>
+                <p style="font-size: 0.9rem; color: #777;">Scopri il post su Instagram</p>
+            </a>
+            
+            <a href="https://www.instagram.com/reel/DV3jIFiiNej/?stkn=NWZwZzM4Z2J0a3k4" target="_blank" class="ig-post">
+                <div style="font-size: 2rem; margin-bottom: 10px;">🎥</div>
+                <strong>Guarda il nostro Reel</strong>
+                <p style="font-size: 0.9rem; color: #777;">Scopri il video su Instagram</p>
+            </a>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2026 <strong>Dettagli e Sfumature</strong>. C.so Francia, 3A, Rivoli (TO)</p>
+    </footer>
+
+</body>
+</html>
+
+```
